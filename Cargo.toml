@@ -1,0 +1,6 @@
+[package]
+name = "code-analyze"
+version = "0.1.0"
+authors = ["Simon Keller <simkelle@htwg-konstanz.de>"]
+
+[dependencies]
