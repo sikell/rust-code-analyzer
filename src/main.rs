@@ -1,6 +1,9 @@
 extern crate walkdir;
 
+use std::fs::File;
+use std::io::{BufRead, BufReader};
 use walkdir::WalkDir;
+use std::path::Path;
 
 fn main() {
     let analyzed_repo_path = "./";
@@ -14,6 +17,13 @@ fn main() {
         };
         if name.ends_with(file_extension) {
             println!("{}", entry.path().display());
+            open_file(entry.path())
         }
     }
+}
+
+fn open_file(file_path: &Path) {
+    let file = File::open(file_path).unwrap();
+    let lines = BufReader::new(file).lines();
+    println!("{} lines in {}", lines.count(), file_path.display());
 }
